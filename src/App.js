@@ -1,10 +1,29 @@
 import './App.css';
+import { createGlobalStyle } from 'styled-components'
+import TodoTemplate from './components/TodoTemplate';
+import TodoHead from './components/TodoHead';
+import TodoList from './components/TodoList';
+import TodoCreate from './components/TodoCreate';
+
+const GlobalStyle = createGlobalStyle`
+  body{
+    background: #e9ecef;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+`
+
 
 function App() {
   return (
-    <div>
-      123
-    </div>
+    <>
+      <GlobalStyle />
+      <TodoTemplate>
+        <TodoHead />
+        <TodoList />
+        <TodoCreate />
+      </TodoTemplate>
+
+    </>
   );
 }
 
