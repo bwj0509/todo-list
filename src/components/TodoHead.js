@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components'
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { TodoStateContext } from '../TodoContext'
 
 const TodoHeadBlock = styled.div`
     padding: 48px 24px 32px 32px;
@@ -23,11 +24,21 @@ const TodoHeadBlock = styled.div`
 `
 
 function TodoHead() {
+    const todos = useContext(TodoStateContext)
+    const undoneTasks = todos.filter((todo) => !todo.done)
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1;
+    const date = today.getDate();
+    const day_n = today.getDay();
+    const day = ['일', '월', '화', '수', '목', '금', '토']
+
     return (
         <TodoHeadBlock>
-            <h1>2022년 4월 5일</h1>
-            <div className='day'>화요일</div>
-            <div className='tasks-left'>할 일 2개 남음</div>
+            <h1>{year}년 {month}월 {date}일</h1>
+            <div className='day'>{day[day_n]}요일</div>
+            <div className='tasks-left'>할 일 {undoneTasks.length}개 남음</div>
         </TodoHeadBlock>
     );
 }

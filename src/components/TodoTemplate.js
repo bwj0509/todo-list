@@ -8,7 +8,7 @@ const TodoTemplateBlock = styled.div`
     position: relative;
     background: white;
     border-radius: 16px;
-    box-shadow: 0 0 8px 0 rgba(0,0,0,0.04);
+    box-shadow: 0 0 8px 0 rgba(0,0,0,0.05);
 
     margin: 0 auto;
 
