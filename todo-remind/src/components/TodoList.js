@@ -18,7 +18,7 @@ function TodoList() {
     return (
         <TodoListBlock>
             {state.map((todo) =>
-                <TodoItem done={todo.done} text={todo.text} id={todo.id} key={todo.id}></TodoItem>
+                <TodoItem done={todo.done} text={todo.text} id={todo.id} key={todo.id} fullDate={todo.fullDate}></TodoItem>
             )}
         </TodoListBlock>
     )

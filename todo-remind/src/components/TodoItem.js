@@ -59,7 +59,7 @@ const Text = styled.div`
 `
 
 
-function TodoItem({ id, done, text }) {
+function TodoItem({ id, done, text, fullDate }) {
     const dispatch = useContext(TodoDispatchContext);
     const onToggle = () => {
         dispatch({
@@ -73,10 +73,21 @@ function TodoItem({ id, done, text }) {
             id
         })
     }
+
+    const showDay = (e) => {
+        const fullDates = new Date(fullDate)
+        const year = fullDates.getFullYear();
+        const month = fullDates.getMonth() + 1;
+        const date = fullDates.getDate();
+        const hour = fullDates.getHours();
+        const minute = fullDates.getMinutes();
+        const second = fullDates.getSeconds();
+        alert(`작성날짜는 ${year}년 ${month}월 ${date}일 ${hour}:${minute}:${second} 입니다.`)
+    }
     return (
         <TodoItemBlock>
             <CheckCircle done={done} onClick={onToggle}>{done && <MdDone />}</CheckCircle>
-            <Text done={done}>{text}</Text>
+            <Text done={done} onClick={showDay}>{text}</Text>
             <Remove onClick={onRemove}>
                 <MdDelete />
             </Remove>
@@ -85,3 +96,4 @@ function TodoItem({ id, done, text }) {
 }
 
 export default React.memo(TodoItem)
+//Wed Apr 06 2022 21:17:55 GMT+0900 (한국 표준시)

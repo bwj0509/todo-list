@@ -86,6 +86,8 @@ function TodoCreate() {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('')
 
+    const fullDate = new Date();
+
     const onToggle = () => {
         setOpen(!open)
     }
@@ -99,7 +101,8 @@ function TodoCreate() {
             todo: {
                 id: nextId.current,
                 text: value,
-                done: false
+                done: false,
+                fullDate: String(fullDate)
             }
         })
         setValue('');

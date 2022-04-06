@@ -7,22 +7,27 @@ const initialTodos = [
     {
         id: 1,
         text: '빨래하기',
-        done: true
+        done: true,
+        fullDate: 'Wed Apr 05 2022 21:12:54 GMT+0900 (한국 표준시)'
+
     },
     {
         id: 2,
         text: '청소하기',
-        done: true
+        done: true,
+        fullDate: 'Wed Apr 05 2022 21:12:54 GMT+0900 (한국 표준시)'
     },
     {
         id: 3,
         text: '공부하기',
-        done: false
+        done: false,
+        fullDate: 'Wed Apr 05 2022 21:12:54 GMT+0900 (한국 표준시)'
     },
     {
         id: 4,
         text: '택배보내기',
-        done: false
+        done: false,
+        fullDate: 'Wed Apr 05 2022 21:12:54 GMT+0900 (한국 표준시)'
     }
 ];
 
@@ -35,7 +40,6 @@ function todoReducer(state, action) {
             return state.map((todo) => todo.id == action.id ? { ...todo, done: !todo.done } : todo)
         case 'REMOVE':
             return state.filter((todo) => action.id !== todo.id)
-
         default:
             throw new Error(`Unhandled action type: ${action.type}`)
     }
@@ -49,7 +53,6 @@ export const TodoNextIdContext = createContext();
 function TodoProvider({ children }) {
     const [state, dispatch] = useReducer(todoReducer, initialTodos);
     const nextId = useRef(5);
-    console.log(state)
     return (
         <TodoStateContext.Provider value={state}>
             <TodoDispatchContext.Provider value={dispatch}>
